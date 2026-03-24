@@ -1,66 +1,66 @@
 [ main ]
-dragon.main()() = {
+df.main()() = {
     test.anvil()()
 }
 
 [ run test ]
 test.anvil()() = {
     [ setup workspace ]
-    dragon.anvil.workspace.open()(workspace)
+    df.anvil.workspace.open()(workspace)
 
     [ do measuring pass ]
-    dragon.anvil.workspace.setup_pass(workspace, dragon.false)(workspace)
+    df.anvil.workspace.setup_pass(workspace, df.false)(workspace)
     test.write_program(workspace)(workspace)
 
     [ do writing pass ]
-    dragon.anvil.workspace.setup_pass(workspace, dragon.true)(workspace)
+    df.anvil.workspace.setup_pass(workspace, df.true)(workspace)
     test.write_program(workspace)(workspace)
 
     [ get program buffer ]
-    dragon.copy(workspace:program)(program)
+    df.copy(workspace:program)(program)
 
     [ install program into context ]
-    dragon.context.open()(context)
-    dragon.context.install_program(context, program)()
+    df.context.open()(context)
+    df.context.install_program(context, program)()
 
     [ run program ]
-    dragon.set(dragon.integer.n1)(instruction_count)
-    dragon.context.run(context, instruction_count)()
+    df.set(df.integer.n1)(instruction_count)
+    df.context.run(context, instruction_count)()
 
     [ clean up ]
-    dragon.buffer.return(context)()
-    dragon.buffer.return(program)()
+    df.buffer.return(context)()
+    df.buffer.return(program)()
 }
 
 [ generate program ]
-test.write_program(workspace !dragon.anvil.workspace)(workspace !dragon.anvil.workspace) = {
+test.write_program(workspace !df.anvil.workspace)(workspace !df.anvil.workspace) = {
     [ setup message string ]
-    dragon.set("The dragon awakens!%0a;")(message)
+    df.set("The dragon awakens!%0a;")(message)
 
     [ setup character cell ]
-    dragon.set(dragon.integer.8192[ FIX LATER ])(write_to)
+    df.set(df.integer.8192[ FIX LATER ])(write_to)
 
     [ generate character printers ]
     [ setup current ]
-    dragon.pack(message, message:start)(current !dragon.current)
+    df.pack(message, message:start)(current !df.current)
 
     [ character printing loop ]
-    @write_prints dragon.always = {
+    @write_prints df.always = {
         [ check if more characters to print, otherwise exit loop ]
-        dragon.current.within_range(current)(in_range, out_of_range)
-        dragon.jump.bottom(out_of_range, @write_prints)()
+        df.current.within_range(current)(in_range, out_of_range)
+        df.jump.bottom(out_of_range, @write_prints)()
 
         [ get character ]
-        dragon.address_to_cell(current:progress, dragon.constant.1)(character, current:progress)
+        df.address_to_cell(current:progress, df.constant.1)(character, current:progress)
 
         [ generate instructions ]
-        dragon.anvil.write.instruction.write_cell(workspace, character, write_to)(workspace)
-        dragon.anvil.write.instruction.debug.putchar(workspace, write_to)(workspace)
+        df.anvil.write.instruction.write_cell(workspace, character, write_to)(workspace)
+        df.anvil.write.instruction.debug.putchar(workspace, write_to)(workspace)
 
         [ jump to loop start ]
-        dragon.jump.top(dragon.always, @write_prints)()
+        df.jump.top(df.always, @write_prints)()
     }
 
     [ write program end ]
-    dragon.anvil.write.instruction.stop(workspace)(workspace)
+    df.anvil.write.instruction.stop(workspace)(workspace)
 }

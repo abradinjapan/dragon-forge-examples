@@ -1,48 +1,48 @@
-dragon.main()() = {
+df.main()() = {
     [ start timer ]
-    dragon.time.now()(time.start)
+    df.time.now()(time.start)
     scratch.print.time(time.start)()
 
     [ declare variables ]
-    dragon.set(dragon.integer.100)(a)
-    dragon.set("Scratching...%0a;")(message)
-    dragon.pack(a, a)(buff !dragon.buffer)
+    df.set(df.integer.100)(a)
+    df.set("Scratching...%0a;")(message)
+    df.pack(a, a)(buff !df.buffer)
 
     [ print variables ]
-    dragon.print.buffer_as_string(message)()
-    dragon.print.integer.unsigned(a)()
-    dragon.print.new_line()()
-    dragon.print.integer.unsigned(buff:start)()
-    dragon.print.new_line()()
+    df.print.buffer_as_string(message)()
+    df.print.integer.unsigned(a)()
+    df.print.new_line()()
+    df.print.integer.unsigned(buff:start)()
+    df.print.new_line()()
 
     @oof
 
-    @scope dragon.never = {
-        dragon.set(dragon.integer.200)(b)
-        dragon.print.integer.unsigned(b)()
-        dragon.print.new_line()()
+    @scope df.never = {
+        df.set(df.integer.200)(b)
+        df.print.integer.unsigned(b)()
+        df.print.new_line()()
 
         @electric_boogaloo
     }
 
     scratch.say(message)(value)
-    dragon.print.integer.unsigned(value)()
-    dragon.print.new_line()()
+    df.print.integer.unsigned(value)()
+    df.print.new_line()()
 
     scratch.create.box_3D()(box)
     scratch.print.box_3D(box)()
 
     scratch.test.jumping()()
-    dragon.set(dragon.integer.22)(c)
+    df.set(df.integer.22)(c)
     scratch.test.checking(c)()
 
     [ test maths! ]
     scratch.test.maths(a, c)(math)
     scratch.test.maths.print(math)()
 
-    dragon.copy(math)(more_maths)
+    df.copy(math)(more_maths)
     scratch.test.maths.print(more_maths)()
-    dragon.pack.null()(no_maths !scratch.maths)
+    df.pack.null()(no_maths !scratch.maths)
     scratch.test.maths.print(no_maths)()
 
     [ test buffers ]
@@ -55,8 +55,8 @@ dragon.main()() = {
     scratch.test.file_buffer_movers()()
 
     [ test lists ]
-    dragon.set("fluffy")(message)
-    dragon.set(dragon.integer.9)(increase)
+    df.set("fluffy")(message)
+    df.set(df.integer.9)(increase)
     scratch.test.list(increase, message)()
 
     [ test bits ]
@@ -87,49 +87,49 @@ dragon.main()() = {
     scratch.test.stack_assorted()()
     
     [ end timer ]
-    dragon.time.now()(time.end)
+    df.time.now()(time.end)
     scratch.print.time(time.end)()
 
     [ print elapsed time ]
-    dragon.integer.subtract(time.end:seconds, time.start:seconds)(seconds_elapsed)
-    dragon.integer.subtract(time.end:nanoseconds, time.start:nanoseconds)(nanoseconds_elapsed)
-    dragon.pack(seconds_elapsed, nanoseconds_elapsed)(time.taken !dragon.time)
+    df.integer.subtract(time.end:seconds, time.start:seconds)(seconds_elapsed)
+    df.integer.subtract(time.end:nanoseconds, time.start:nanoseconds)(nanoseconds_elapsed)
+    df.pack(seconds_elapsed, nanoseconds_elapsed)(time.taken !df.time)
     scratch.print.time(time.taken)()
 
     [ test stop ]
-    dragon.set("Stopping!%0a;")(message)
-    dragon.print.buffer_as_string(message)()
+    df.set("Stopping!%0a;")(message)
+    df.print.buffer_as_string(message)()
 
     [ stop ]
-    [ dragon.execution.stop()() ]
+    [ df.execution.stop()() ]
 
     [ print failure ]
-    dragon.set("Apparently not stopping!%0a;")(message)
-    dragon.print.buffer_as_string(message)()
+    df.set("Apparently not stopping!%0a;")(message)
+    df.print.buffer_as_string(message)()
 }
 
 [ test current assorted ]
-scratch.test.current_assorted(message !dragon.buffer)() = {
+scratch.test.current_assorted(message !df.buffer)() = {
     [ setup current ]
-    dragon.pack(message, message:start)(current !dragon.current)
+    df.pack(message, message:start)(current !df.current)
 
     [ loop start ]
     @start
 
     [ check if in range ]
-    dragon.current.within_range(current)(continue, exit)
-    dragon.jump(exit, @exit)()
+    df.current.within_range(current)(continue, exit)
+    df.jump(exit, @exit)()
 
     [ print string ]
-    dragon.pack(current:progress, current:buffer:end)(slice !dragon.buffer)
-    dragon.print.buffer_as_string(slice)()
-    dragon.print.new_line()()
+    df.pack(current:progress, current:buffer:end)(slice !df.buffer)
+    df.print.buffer_as_string(slice)()
+    df.print.new_line()()
 
     [ increment current ]
-    dragon.integer.add(current:progress, dragon.constant.1)(current:progress)
+    df.integer.add(current:progress, df.constant.1)(current:progress)
 
     [ jump to start ]
-    dragon.jump(dragon.always, @start)()
+    df.jump(df.always, @start)()
 
     [ loop exit ]
     @exit
@@ -138,547 +138,547 @@ scratch.test.current_assorted(message !dragon.buffer)() = {
 [ test structure operations ]
 scratch.test.structures_assorted()() = {
     [ print test header ]
-    dragon.set("Structure Assorted Data:")(message)
-    dragon.print.buffer_as_string(message)()
-    dragon.print.new_line()()
+    df.set("Structure Assorted Data:")(message)
+    df.print.buffer_as_string(message)()
+    df.print.new_line()()
 
     [ setup data ]
-    dragon.pack(dragon.constant.0, dragon.constant.1)(a !dragon.buffer)
-    dragon.pack.null()(b !dragon.list)
+    df.pack(df.constant.0, df.constant.1)(a !df.buffer)
+    df.pack.null()(b !df.list)
 
     [ calculate size ]
-    dragon.structure.byte_size(a)(a.length)
-    dragon.structure.byte_size(b)(b.length)
+    df.structure.byte_size(a)(a.length)
+    df.structure.byte_size(b)(b.length)
 
     [ print length ]
-    dragon.print.integer.unsigned(a.length)()
-    dragon.print.new_line()()
-    dragon.print.integer.unsigned(b.length)()
-    dragon.print.new_line()()
+    df.print.integer.unsigned(a.length)()
+    df.print.new_line()()
+    df.print.integer.unsigned(b.length)()
+    df.print.new_line()()
 
     [ open list ]
-    dragon.set(dragon.integer.16)(increase)
-    dragon.buffer.request(increase)(buffer)
+    df.set(df.integer.16)(increase)
+    df.buffer.request(increase)(buffer)
 
     [ pack increment ]
-    dragon.set("Pack Increment:%0a;")(message)
-    dragon.print.buffer_as_string(message)()
-    dragon.pack.increment(dragon.constant.5, dragon.constant.2)(output !scratch.box_3D)
-    dragon.print.integer.unsigned(output:x)()
-    dragon.print.new_line()()
-    dragon.print.integer.unsigned(output:y)()
-    dragon.print.new_line()()
-    dragon.print.integer.unsigned(output:z)()
-    dragon.print.new_line()()
+    df.set("Pack Increment:%0a;")(message)
+    df.print.buffer_as_string(message)()
+    df.pack.increment(df.constant.5, df.constant.2)(output !scratch.box_3D)
+    df.print.integer.unsigned(output:x)()
+    df.print.new_line()()
+    df.print.integer.unsigned(output:y)()
+    df.print.new_line()()
+    df.print.integer.unsigned(output:z)()
+    df.print.new_line()()
 
     [ close buffer ]
-    dragon.buffer.return(buffer)()
+    df.buffer.return(buffer)()
 }
 
 [ test buffer operations ]
 scratch.test.buffers_assorted()() = {
     [ setup variables ]
-    dragon.set("Buffer calculations:%0A;")(message)
-    dragon.set(dragon.integer.10)(start)
-    dragon.set(dragon.integer.20)(end)
-    dragon.pack(start, end)(buffer !dragon.buffer)
+    df.set("Buffer calculations:%0A;")(message)
+    df.set(df.integer.10)(start)
+    df.set(df.integer.20)(end)
+    df.pack(start, end)(buffer !df.buffer)
 
     [ do calculations ]
-    dragon.buffer.calculate.length(buffer)(result.length)
-    dragon.buffer.calculate.end_address(start, result.length)(result.end)
-    dragon.buffer.calculate.start_address(result.length, end)(result.start)
+    df.buffer.calculate.length(buffer)(result.length)
+    df.buffer.calculate.end_address(start, result.length)(result.end)
+    df.buffer.calculate.start_address(result.length, end)(result.start)
 
     [ print data ]
-    dragon.print.buffer_as_string(message)()
-    dragon.print.integer.unsigned(result.length)()
-    dragon.print.new_line()()
-    dragon.print.integer.unsigned(result.end)()
-    dragon.print.new_line()()
-    dragon.print.integer.unsigned(result.start)()
-    dragon.print.new_line()()
+    df.print.buffer_as_string(message)()
+    df.print.integer.unsigned(result.length)()
+    df.print.new_line()()
+    df.print.integer.unsigned(result.end)()
+    df.print.new_line()()
+    df.print.integer.unsigned(result.start)()
+    df.print.new_line()()
 }
 
 [ test lists ]
-scratch.test.list(increase !dragon.cell, data !dragon.buffer)() = {
+scratch.test.list(increase !df.cell, data !df.buffer)() = {
     [ open list ]
-    dragon.list.open(increase)(list)
+    df.list.open(increase)(list)
 
     [ append data to list ]
-    dragon.list.append.buffer_data(list, data)(list)
-    dragon.list.append.buffer_data(list, data)(list)
-    dragon.list.append.buffer_data(list, data)(list)
+    df.list.append.buffer_data(list, data)(list)
+    df.list.append.buffer_data(list, data)(list)
+    df.list.append.buffer_data(list, data)(list)
 
     [ print list ]
     scratch.print.list(list)()
-    dragon.print.new_line()()
+    df.print.new_line()()
     scratch.print.list_as_string(list)()
-    dragon.print.new_line()()
+    df.print.new_line()()
 
     [ close list ]
-    dragon.list.close(list)()
+    df.list.close(list)()
 }
 
 [ print list as string ]
-scratch.print.list_as_string(list !dragon.list)() = {
+scratch.print.list_as_string(list !df.list)() = {
     [ create string buffer ]
-    dragon.list.calculate.content_buffer(list)(string)
+    df.list.calculate.content_buffer(list)(string)
 
     [ print buffer ]
-    dragon.print.buffer_as_string(string)()
+    df.print.buffer_as_string(string)()
 }
 
 [ print list raw data ]
-scratch.print.list(list !dragon.list)() = {
+scratch.print.list(list !df.list)() = {
     [ setup strings ]
-    dragon.set("[ ")(header)
-    dragon.set(", ")(separator)
-    dragon.set(" ]")(footer)
+    df.set("[ ")(header)
+    df.set(", ")(separator)
+    df.set(" ]")(footer)
 
     [ print list ]
     [ print allocation ]
-    dragon.print.buffer_as_string(header)()
-    dragon.print.integer.unsigned(list:allocation:start)()
-    dragon.print.buffer_as_string(separator)()
-    dragon.print.integer.unsigned(list:allocation:end)()
+    df.print.buffer_as_string(header)()
+    df.print.integer.unsigned(list:allocation:start)()
+    df.print.buffer_as_string(separator)()
+    df.print.integer.unsigned(list:allocation:end)()
 
     [ print length ]
-    dragon.print.buffer_as_string(separator)()
-    dragon.print.integer.unsigned(list:length)()
+    df.print.buffer_as_string(separator)()
+    df.print.integer.unsigned(list:length)()
 
     [ print increase ]
-    dragon.print.buffer_as_string(separator)()
-    dragon.print.integer.unsigned(list:increase)()
+    df.print.buffer_as_string(separator)()
+    df.print.integer.unsigned(list:increase)()
 
     [ print footer ]
-    dragon.print.buffer_as_string(footer)()
+    df.print.buffer_as_string(footer)()
 }
 
 [ test file mover ]
 scratch.test.file_buffer_movers()() = {
     [ test file reader ]
     [ setup file paths ]
-    dragon.set("./README.md")(readme_path)
-    dragon.set("../dragon-testing/notes/oof.md")(destination_path)
+    df.set("./README.md")(readme_path)
+    df.set("../dragon-testing/notes/oof.md")(destination_path)
 
     [ open the file ]
-    dragon.file_to_buffer(readme_path)(buffer)
+    df.file_to_buffer(readme_path)(buffer)
 
     [ print file ]
-    dragon.print.buffer_as_string(buffer)()
+    df.print.buffer_as_string(buffer)()
 
     [ write to new file ]
-    dragon.buffer_to_file(buffer, destination_path)()
+    df.buffer_to_file(buffer, destination_path)()
 
     [ close file ]
-    dragon.buffer.return(buffer)()
+    df.buffer.return(buffer)()
 
     [ delete the file ]
-    dragon.delete_file(destination_path)()
+    df.delete_file(destination_path)()
 }
 
 [ test printing ]
 scratch.test.printing()() = {
     [ setup data ]
-    dragon.set("This is a string.")(string)
-    dragon.set(dragon.integer.127)(cell)
+    df.set("This is a string.")(string)
+    df.set(df.integer.127)(cell)
 
     [ test prints ]
-    dragon.print.buffer_as_string(string)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(cell)()
-    dragon.print.new_line()()
+    df.print.buffer_as_string(string)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(cell)()
+    df.print.new_line()()
 
     [ test tab printing ]
-    dragon.set(dragon.integer.2)(tab_count)
-    dragon.print.tabs(tab_count)()
-    dragon.print.buffer_as_string(string)()
-    dragon.print.new_line()()
+    df.set(df.integer.2)(tab_count)
+    df.print.tabs(tab_count)()
+    df.print.buffer_as_string(string)()
+    df.print.new_line()()
 }
 
-scratch.test.checking(checking_value !dragon.cell)() = {
+scratch.test.checking(checking_value !df.cell)() = {
     [ setup variables ]
-    dragon.set(dragon.integer.11)(lower_end)
-    dragon.set(dragon.integer.33)(higher_end)
-    dragon.integer.within_range(lower_end, checking_value, higher_end)(should_run, shouldnt_run)
+    df.set(df.integer.11)(lower_end)
+    df.set(df.integer.33)(higher_end)
+    df.integer.within_range(lower_end, checking_value, higher_end)(should_run, shouldnt_run)
 
     [ skip print if necessary ]
-    dragon.jump(shouldnt_run, @skip_print)()
+    df.jump(shouldnt_run, @skip_print)()
 
     [ print ]
-    dragon.set("Within range!%0A;")(message)
-    dragon.print.buffer_as_string(message)()
+    df.set("Within range!%0A;")(message)
+    df.print.buffer_as_string(message)()
 
     [ offset ]
     @skip_print
 }
 
-scratch.say(message !dragon.buffer)(w !dragon.cell) = {
-    dragon.print.buffer_as_string(message)()
-    dragon.set(dragon.integer.4321)(w)
+scratch.say(message !df.buffer)(w !df.cell) = {
+    df.print.buffer_as_string(message)()
+    df.set(df.integer.4321)(w)
 }
 
 scratch.create.box_3D()(output !scratch.box_3D) = {
-    dragon.set(dragon.integer.333)(x)
-    dragon.set(dragon.integer.444)(y)
-    dragon.set(dragon.integer.555)(z)
-    dragon.pack(x, y, z)(output !scratch.box_3D)
+    df.set(df.integer.333)(x)
+    df.set(df.integer.444)(y)
+    df.set(df.integer.555)(z)
+    df.pack(x, y, z)(output !scratch.box_3D)
 }
 
 scratch.print.box_3D(box !scratch.box_3D)() = {
-    dragon.set("Box: %0A;")(title)
-    dragon.print.buffer_as_string(title)()
-    dragon.set("%09;")(tab)
-    dragon.print.buffer_as_string(tab)()
-    dragon.print.integer.unsigned(box:x)()
-    dragon.print.new_line()()
-    dragon.print.buffer_as_string(tab)()
-    dragon.print.integer.unsigned(box:y)()
-    dragon.print.new_line()()
-    dragon.print.buffer_as_string(tab)()
-    dragon.print.integer.unsigned(box:z)()
-    dragon.print.new_line()()
+    df.set("Box: %0A;")(title)
+    df.print.buffer_as_string(title)()
+    df.set("%09;")(tab)
+    df.print.buffer_as_string(tab)()
+    df.print.integer.unsigned(box:x)()
+    df.print.new_line()()
+    df.print.buffer_as_string(tab)()
+    df.print.integer.unsigned(box:y)()
+    df.print.new_line()()
+    df.print.buffer_as_string(tab)()
+    df.print.integer.unsigned(box:z)()
+    df.print.new_line()()
 }
 
-!scratch.box_3D(x !dragon.cell, y !dragon.cell, z !dragon.cell)
+!scratch.box_3D(x !df.cell, y !df.cell, z !df.cell)
 
 [ test normal jumping ]
 scratch.test.jumping()() = {
     [ setup loop data ]
-    dragon.set(dragon.integer.0)(bottom)
-    dragon.set(dragon.integer.0)(current)
-    dragon.set(dragon.integer.10)(top)
-    dragon.set(dragon.integer.1)(increment)
+    df.set(df.integer.0)(bottom)
+    df.set(df.integer.0)(current)
+    df.set(df.integer.10)(top)
+    df.set(df.integer.1)(increment)
 
     [ setup offset ]
     @start
 
     [ check for out of bounds ]
-    dragon.integer.within_range(bottom, current, top)(shouldnt_quit, should_quit)
-    dragon.jump(should_quit, @exit)()
+    df.integer.within_range(bottom, current, top)(shouldnt_quit, should_quit)
+    df.jump(should_quit, @exit)()
 
     [ print variable ]
-    dragon.print.integer.unsigned(current)()
-    dragon.print.new_line()()
+    df.print.integer.unsigned(current)()
+    df.print.new_line()()
 
     [ increment variable ]
-    dragon.integer.add(current, increment)(current)
+    df.integer.add(current, increment)(current)
 
     [ jump to loop start ]
-    dragon.jump(dragon.always, @start)()
+    df.jump(df.always, @start)()
 
     [ end loop ]
     @exit
 }
 
 [ math conglomerate ]
-!scratch.maths(addition !dragon.cell #dragon.json.boolean, subtraction !dragon.cell, multiplication !dragon.cell, division !dragon.cell, modulous !dragon.cell)
+!scratch.maths(addition !df.cell #df.json.boolean, subtraction !df.cell, multiplication !df.cell, division !df.cell, modulous !df.cell)
 
 [ test math ]
-scratch.test.maths(a !dragon.cell, b !dragon.cell)(maths !scratch.maths) = {
+scratch.test.maths(a !df.cell, b !df.cell)(maths !scratch.maths) = {
     [ do maths ]
-    dragon.integer.add(a, b)(maths:addition)
-    dragon.integer.subtract(a, b)(maths:subtraction)
-    dragon.integer.multiply(a, b)(maths:multiplication)
-    dragon.integer.divide(a, b)(maths:division)
-    dragon.integer.modulous(a, b)(maths:modulous)
+    df.integer.add(a, b)(maths:addition)
+    df.integer.subtract(a, b)(maths:subtraction)
+    df.integer.multiply(a, b)(maths:multiplication)
+    df.integer.divide(a, b)(maths:division)
+    df.integer.modulous(a, b)(maths:modulous)
 }
 
 [ print maths ]
 scratch.test.maths.print(maths !scratch.maths)() = {
     [ print header ]
-    dragon.set("maths(")(title)
-    dragon.set(" ")(space)
-    dragon.print.buffer_as_string(title)()
+    df.set("maths(")(title)
+    df.set(" ")(space)
+    df.print.buffer_as_string(title)()
 
     [ print values ]
-    dragon.print.integer.unsigned(maths:addition)()
-    dragon.print.buffer_as_string(space)()
-    dragon.print.integer.unsigned(maths:subtraction)()
-    dragon.print.buffer_as_string(space)()
-    dragon.print.integer.unsigned(maths:multiplication)()
-    dragon.print.buffer_as_string(space)()
-    dragon.print.integer.unsigned(maths:division)()
-    dragon.print.buffer_as_string(space)()
-    dragon.print.integer.unsigned(maths:modulous)()
+    df.print.integer.unsigned(maths:addition)()
+    df.print.buffer_as_string(space)()
+    df.print.integer.unsigned(maths:subtraction)()
+    df.print.buffer_as_string(space)()
+    df.print.integer.unsigned(maths:multiplication)()
+    df.print.buffer_as_string(space)()
+    df.print.integer.unsigned(maths:division)()
+    df.print.buffer_as_string(space)()
+    df.print.integer.unsigned(maths:modulous)()
 
     [ print footer ]
-    dragon.set(")%0A;")(footer)
-    dragon.print.buffer_as_string(footer)()
+    df.set(")%0A;")(footer)
+    df.print.buffer_as_string(footer)()
 }
 
 [ test buffers ]
 scratch.test.buffer()() = {
     [ allocate buffer ]
-    dragon.set(dragon.integer.152)(size)
-    dragon.buffer.request(size)(buffer)
+    df.set(df.integer.152)(size)
+    df.buffer.request(size)(buffer)
 
     [ setup string & index data ]
-    dragon.set("Hello World!%0A;")(message)
-    dragon.set(dragon.integer.1)(byte_count)
+    df.set("Hello World!%0A;")(message)
+    df.set(df.integer.1)(byte_count)
 
     [ read character from string ]
-    dragon.address_to_cell(message:start, byte_count)(data, advancement)
+    df.address_to_cell(message:start, byte_count)(data, advancement)
 
     [ increment data ]
-    dragon.set(dragon.integer.1)(increment)
-    dragon.integer.add(data, increment)(data)
+    df.set(df.integer.1)(increment)
+    df.integer.add(data, increment)(data)
 
     [ replace character in string ]
-    dragon.cell_to_address(data, byte_count, message:start)(advancement)
+    df.cell_to_address(data, byte_count, message:start)(advancement)
 
     [ print new string ]
-    dragon.print.buffer_as_string(message)()
+    df.print.buffer_as_string(message)()
 
     [ deallocate buffer ]
-    dragon.buffer.return(buffer)()
+    df.buffer.return(buffer)()
 }
 
 [ test bits ]
 scratch.test.bits()() = {
     [ setup variables ]
-    dragon.set(dragon.binary.1010_0101)(a)
-    dragon.set(dragon.binary.1010_1010)(b)
-    dragon.set(dragon.integer.2)(c)
+    df.set(df.binary.1010_0101)(a)
+    df.set(df.binary.1010_1010)(b)
+    df.set(df.integer.2)(c)
 
     [ test bits ]
-    dragon.bits.or(a, b)(or_result)
-    dragon.bits.invert(a)(invert_result)
-    dragon.bits.and(a, b)(and_result)
-    dragon.bits.xor(a, b)(xor_result)
-    dragon.bits.shift_higher(a, c)(shift_higher_result)
-    dragon.bits.shift_lower(a, c)(shift_lower_result)
-    dragon.bits.overwrite(b[mask], a[old_bits], c[new_bits])(overwrite_result)
+    df.bits.or(a, b)(or_result)
+    df.bits.invert(a)(invert_result)
+    df.bits.and(a, b)(and_result)
+    df.bits.xor(a, b)(xor_result)
+    df.bits.shift_higher(a, c)(shift_higher_result)
+    df.bits.shift_lower(a, c)(shift_lower_result)
+    df.bits.overwrite(b[mask], a[old_bits], c[new_bits])(overwrite_result)
 
     [ print results ]
-    dragon.print.binary.lower_to_higher(b)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(or_result)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(invert_result)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(and_result)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(xor_result)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(shift_higher_result)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(shift_lower_result)()
-    dragon.print.new_line()()
-    dragon.print.binary.lower_to_higher(overwrite_result)()
-    dragon.print.new_line()()
+    df.print.binary.lower_to_higher(b)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(or_result)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(invert_result)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(and_result)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(xor_result)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(shift_higher_result)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(shift_lower_result)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(overwrite_result)()
+    df.print.new_line()()
 }
 
 [ print time ]
-scratch.print.time(time !dragon.time)() = {
-    dragon.set("Current time: [ seconds: ")(message)
-    dragon.print.buffer_as_string(message)()
-    dragon.print.integer.unsigned(time:seconds)()
-    dragon.set(", nanoseconds: ")(message)
-    dragon.print.buffer_as_string(message)()
-    dragon.print.integer.unsigned(time:nanoseconds)()
-    dragon.set(" ]%0A;")(message)
-    dragon.print.buffer_as_string(message)()
+scratch.print.time(time !df.time)() = {
+    df.set("Current time: [ seconds: ")(message)
+    df.print.buffer_as_string(message)()
+    df.print.integer.unsigned(time:seconds)()
+    df.set(", nanoseconds: ")(message)
+    df.print.buffer_as_string(message)()
+    df.print.integer.unsigned(time:nanoseconds)()
+    df.set(" ]%0A;")(message)
+    df.print.buffer_as_string(message)()
 }
 
 [ test tags ]
 !scratch.tags(
-    buffer !dragon.buffer #dragon.json.buffer.addresses
+    buffer !df.buffer #df.json.buffer.addresses
 )
 
 [ test compiler assorted ]
 scratch.test.compiler_assorted()() = {
     [ get source file ]
-    dragon.set("../dragon-testing/demonstration/hello-world.dragon")(file_path)
-    dragon.file_to_buffer(file_path)(source)
+    df.set("../dragon-testing/demonstration/hello-world.dragon")(file_path)
+    df.file_to_buffer(file_path)(source)
 
     [ print file ]
-    dragon.print.buffer_as_string(source)()
-    dragon.print.new_line()()
+    df.print.buffer_as_string(source)()
+    df.print.new_line()()
 
     [ append source file to source file list ]
-    dragon.structure.byte_size(source)(increase)
-    dragon.list.open(increase)(sources)
-    dragon.list.append.buffer(sources, source)(sources)
+    df.structure.byte_size(source)(increase)
+    df.list.open(increase)(sources)
+    df.list.append.buffer(sources, source)(sources)
 
     [ DEBUG TEST - give incorrect buffer size ]
-    [ dragon.integer.add(sources:length, dragon.constant.1)(sources:length) ]
+    [ df.integer.add(sources:length, df.constant.1)(sources:length) ]
 
     [ DEBUG TEST - append null buffer ]
-    [ dragon.pack.null()(null_buffer !dragon.buffer)
-    dragon.list.append.buffer(sources, null_buffer)(sources) ]
+    [ df.pack.null()(null_buffer !df.buffer)
+    df.list.append.buffer(sources, null_buffer)(sources) ]
 
     [ get buffer of buffers ]
-    dragon.list.calculate.content_buffer(sources)(sources.buffer)
+    df.list.calculate.content_buffer(sources)(sources.buffer)
 
     [ create settings ]
-    dragon.compiler.configure.default_compile()(settings)
+    df.compiler.configure.default_compile()(settings)
 
     [ compile ]
-    dragon.compiler.compile(sources.buffer, settings)(byte_code, debug_information, compiler.error)
-    dragon.error.convert_compiler_error_to_dragon_error(compiler.error)(error)
+    df.compiler.compile(sources.buffer, settings)(byte_code, debug_information, compiler.error)
+    df.error.convert_compiler_error_to_dragon_error(compiler.error)(error)
 
     [ print message & skip context creation ]
     @print_compilation_error compiler.error:occured = {
-        dragon.print.buffer_as_string(compiler.error:message)()
-        dragon.print.new_line()()
-        dragon.jump(dragon.always, @clean_up)()
+        df.print.buffer_as_string(compiler.error:message)()
+        df.print.new_line()()
+        df.jump(df.always, @clean_up)()
     }
 
     [ setup context ]
-    dragon.context.open()(context)
-    dragon.context.install_program(context, byte_code)()
+    df.context.open()(context)
+    df.context.install_program(context, byte_code)()
 
     [ do stats for context ]
-    dragon.buffer.calculate.length(context)(context.length)
-    dragon.print.integer.unsigned(context.length)()
-    dragon.print.new_line()()
+    df.buffer.calculate.length(context)(context.length)
+    df.print.integer.unsigned(context.length)()
+    df.print.new_line()()
 
     [ run code ]
-    dragon.set(dragon.integer.n1)(instruction_count)
-    dragon.context.run(context, instruction_count)()
+    df.set(df.integer.n1)(instruction_count)
+    df.context.run(context, instruction_count)()
 
     [ clean up context ]
     @clean_up_context
-    dragon.buffer.return(context)()
+    df.buffer.return(context)()
 
     [ clean up ]
     @clean_up
-    dragon.buffer.return(byte_code)()
-    dragon.buffer.return(source)()
-    dragon.list.close(sources)()
+    df.buffer.return(byte_code)()
+    df.buffer.return(source)()
+    df.list.close(sources)()
 }
 
 [ test allocation checker ]
 scratch.test.find_allocation()() = {
     [ setup allocation ]
-    dragon.buffer.request(dragon.constant.64)(real_allocation)
+    df.buffer.request(df.constant.64)(real_allocation)
 
     [ setup searches ]
-    dragon.copy(real_allocation)(search_1)
-    dragon.copy(real_allocation)(search_2)
-    dragon.copy(real_allocation)(search_3)
+    df.copy(real_allocation)(search_1)
+    df.copy(real_allocation)(search_2)
+    df.copy(real_allocation)(search_3)
 
     [ test search 1 ]
     [ must check for exact same buffer ]
-    dragon.find_allocation(search_1)(found, found_allocation)
+    df.find_allocation(search_1)(found, found_allocation)
 
     [ print findings ]
     scratch.test.find_allocation.print.result(found, found_allocation)()
-    dragon.print.new_line()()
+    df.print.new_line()()
 
     [ test search 2 ]
     [ make test 2 beyond the bounds of the allocation ]
-    dragon.integer.subtract(search_2:start, dragon.constant.1)(search_2:start)
-    dragon.integer.add(search_2:end, dragon.constant.1)(search_2:end)
+    df.integer.subtract(search_2:start, df.constant.1)(search_2:start)
+    df.integer.add(search_2:end, df.constant.1)(search_2:end)
 
     [ test search ]
-    dragon.find_allocation(search_2)(found, found_allocation)
+    df.find_allocation(search_2)(found, found_allocation)
 
     [ print findings ]
     scratch.test.find_allocation.print.result(found, found_allocation)()
-    dragon.print.new_line()()
+    df.print.new_line()()
 
     [ test search 3 ]
     [ make test 3 within the bounds of the allocation ]
-    dragon.integer.add(search_3:start, dragon.constant.1)(search_3:start)
-    dragon.integer.subtract(search_3:end, dragon.constant.1)(search_3:end)
+    df.integer.add(search_3:start, df.constant.1)(search_3:start)
+    df.integer.subtract(search_3:end, df.constant.1)(search_3:end)
 
     [ test search ]
-    dragon.find_allocation(search_3)(found, found_allocation)
+    df.find_allocation(search_3)(found, found_allocation)
 
     [ print findings ]
     scratch.test.find_allocation.print.result(found, found_allocation)()
-    dragon.print.new_line()()
+    df.print.new_line()()
 
     [ clean up test allocation ]
-    dragon.buffer.return(real_allocation)()
+    df.buffer.return(real_allocation)()
 }
 
 [ print result from allocation test ]
-scratch.test.find_allocation.print.result(found !dragon.cell, source_allocation !dragon.buffer)() = {
+scratch.test.find_allocation.print.result(found !df.cell, source_allocation !df.buffer)() = {
     [ setup strings ]
-    dragon.set("[ ")(header)
-    dragon.set(", ")(separator)
-    dragon.set(" ]")(footer)
+    df.set("[ ")(header)
+    df.set(", ")(separator)
+    df.set(" ]")(footer)
 
     [ print result ]
-    dragon.print.buffer_as_string(header)()
-    dragon.print.integer.unsigned(found)()
-    dragon.print.buffer_as_string(separator)()
-    dragon.print.integer.unsigned(source_allocation:start)()
-    dragon.print.buffer_as_string(separator)()
-    dragon.print.integer.unsigned(source_allocation:end)()
-    dragon.print.buffer_as_string(footer)()
+    df.print.buffer_as_string(header)()
+    df.print.integer.unsigned(found)()
+    df.print.buffer_as_string(separator)()
+    df.print.integer.unsigned(source_allocation:start)()
+    df.print.buffer_as_string(separator)()
+    df.print.integer.unsigned(source_allocation:end)()
+    df.print.buffer_as_string(footer)()
 }
 
 [ check allocation limit ]
 scratch.test.allocation_limits()() = {
     [ setup size ]
-    dragon.set(dragon.hexadecimal.1000000000)(size)
+    df.set(df.hexadecimal.1000000000)(size)
 
     [ allocate ]
-    dragon.buffer.request(size)(allocation)
+    df.buffer.request(size)(allocation)
 
     [ print allocation ]
-    dragon.print.buffer(allocation)()
-    dragon.print.new_line()()
+    df.print.buffer(allocation)()
+    df.print.new_line()()
 
     [ return allocation ]
-    dragon.buffer.return(allocation)()
+    df.buffer.return(allocation)()
 
     [ yay! no crash! ]
-    dragon.set("No crashes with the eternal dragon!%0a;")(message)
-    dragon.print.buffer_as_string(message)()
+    df.set("No crashes with the eternal dragon!%0a;")(message)
+    df.print.buffer_as_string(message)()
 }
 
 [ test time functions ]
 scratch.test.time_assorted()() = {
     [ setup constants ]
-    dragon.set(dragon.integer.1_000_000_000)(nanoseconds_in_second)
-    dragon.integer.subtract(nanoseconds_in_second, dragon.constant.1)(just_under)
+    df.set(df.integer.1_000_000_000)(nanoseconds_in_second)
+    df.integer.subtract(nanoseconds_in_second, df.constant.1)(just_under)
 
     [ setup dummy times ]
-    dragon.pack(dragon.constant.0, just_under)(a !dragon.time)
-    dragon.pack(dragon.constant.0, dragon.constant.1)(b !dragon.time)
+    df.pack(df.constant.0, just_under)(a !df.time)
+    df.pack(df.constant.0, df.constant.1)(b !df.time)
 
     [ print time ]
     scratch.print.time(a)()
     scratch.print.time(b)()
 
     [ add times ]
-    dragon.time.add(a, b)(c)
+    df.time.add(a, b)(c)
 
     [ print result ]
     scratch.print.time(c)()
 
     [ print space ]
-    dragon.print.new_line()()
+    df.print.new_line()()
 }
 
 [ test stack functions ]
 scratch.test.stack_assorted()() = {
     [ print current stack ]
-    dragon.print.current(dragon.call_stack)()
-    dragon.print.new_line()()
+    df.print.current(df.call_stack)()
+    df.print.new_line()()
 
     [ allocate new stack ]
-    dragon.set(dragon.integer.100000)(length)
-    dragon.buffer.request(length)(new_stack.buffer)
-    dragon.pack(new_stack.buffer, new_stack.buffer:start)(new_stack !dragon.current)
+    df.set(df.integer.100000)(length)
+    df.buffer.request(length)(new_stack.buffer)
+    df.pack(new_stack.buffer, new_stack.buffer:start)(new_stack !df.current)
 
     [ save old stack ]
-    dragon.copy(dragon.call_stack)(old_stack)
+    df.copy(df.call_stack)(old_stack)
 
     [ install new stack ]
-    dragon.copy(new_stack)(dragon.call_stack)
+    df.copy(new_stack)(df.call_stack)
 
     [ print stack ]
-    dragon.print.current(dragon.call_stack)()
-    dragon.print.new_line()()
+    df.print.current(df.call_stack)()
+    df.print.new_line()()
 
     [ reinstall old stack ]
-    dragon.copy(old_stack)(dragon.call_stack)
+    df.copy(old_stack)(df.call_stack)
 
     [ clean up old stack ]
-    dragon.buffer.return(new_stack.buffer)()
+    df.buffer.return(new_stack.buffer)()
 }

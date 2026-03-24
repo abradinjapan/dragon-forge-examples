@@ -1,11 +1,11 @@
 [ main ]
-dragon.main()() = {
+df.main()() = {
     [ for speed, disable address catching ]
-    dragon.copy(dragon.false)(dragon.catch_addresses)
+    df.copy(df.false)(df.catch_addresses)
 
     [ tell user all examples are running ]
-    dragon.set("Running all examples!%0a;")(message)
-    dragon.print.buffer_as_string(message)()
+    df.set("Running all examples!%0a;")(message)
+    df.print.buffer_as_string(message)()
 
     [ run hello world test ]
     test.hello_world()()
@@ -23,39 +23,39 @@ dragon.main()() = {
 [ hello world ]
 test.hello_world()() = {
     [ setup file path ]
-    dragon.set("./examples/hello-world/hello-world.df")(file_path)
-    dragon.pack.null()(program.input !dragon.buffer)
+    df.set("./examples/hello-world/hello-world.df")(file_path)
+    df.pack.null()(program.input !df.buffer)
 
     [ run test ]
-    dragon.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
+    df.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
 }
 
 [ basic language abilities ]
 test.scratch()() = {
     [ setup file path ]
-    dragon.set("./examples/scratch.df")(file_path)
-    dragon.pack.null()(program.input !dragon.buffer)
+    df.set("./examples/scratch.df")(file_path)
+    df.pack.null()(program.input !df.buffer)
 
     [ run test ]
-    dragon.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
+    df.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
 }
 
 [ test json abilities ]
 test.json()() = {
     [ setup file path ]
-    dragon.set("./examples/test_json.df")(file_path)
-    dragon.pack.null()(program.input !dragon.buffer)
+    df.set("./examples/test_json.df")(file_path)
+    df.pack.null()(program.input !df.buffer)
 
     [ run test ]
-    dragon.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
+    df.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
 }
 
 [ test anvil abilities ]
 test.anvil()() = {
     [ setup file path ]
-    dragon.set("./examples/test_anvil.df")(file_path)
-    dragon.pack.null()(program.input !dragon.buffer)
+    df.set("./examples/test_anvil.df")(file_path)
+    df.pack.null()(program.input !df.buffer)
 
     [ run test ]
-    dragon.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
+    df.just_run.one_file(file_path, program.input)(compilation.error, program.result, program.error)
 }
