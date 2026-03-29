@@ -3,12 +3,12 @@ df.main()() = {
     [ for speed, disable address catching ]
     df.copy(df.true)(df.catch_addresses)
 
-    [ tell user all examples are running ]
-    df.set("[%0a;%09;Running all examples!%0a;]%0a;%0a;")(message)
+    [ tell user all tests are running ]
+    df.set("[%0a;%09;Running all tests!%0a;]%0a;%0a;")(message)
     df.print.buffer_as_string(message)()
 
-    [ run all examples ]
-    df_examples.run_all_examples()()
+    [ run all tests ]
+    df_tests.run_all_tests()()
 
     [ run hello world test ]
     test.hello_world()()
@@ -23,10 +23,10 @@ df.main()() = {
     test.anvil()()
 }
 
-[ run all examples ]
-df_examples.run_all_examples()() = {
+[ run all tests ]
+df_tests.run_all_tests()() = {
     [ get json file ]
-    df.set("./examples/examples.json")(file_path)
+    df.set("./tests/tests.json")(file_path)
     df.file_to_buffer(file_path)(json)
 
     [ check if not found ]
@@ -55,45 +55,45 @@ df_examples.run_all_examples()() = {
     }
 
     [ get list header ]
-    df.set("examples")(json_name.examples)
-    df.json.traverse.retrieve_parsling.by_name(json_workspace:parslings:root, json_name.examples)(json_parsling.examples_header, found, not_found)
-    @json.couldnt_find_examples_header not_found = {
+    df.set("tests")(json_name.tests)
+    df.json.traverse.retrieve_parsling.by_name(json_workspace:parslings:root, json_name.tests)(json_parsling.tests_header, found, not_found)
+    @json.couldnt_find_tests_header not_found = {
         [ print error header ]
-        df.set("The main array (%22;examples%22;) inside the main json example file could not be found.%0a;")(message)
+        df.set("The main array (%22;tests%22;) inside the main json test file could not be found.%0a;")(message)
         df.print.buffer_as_string(message)()
 
         [ DEBUG ]
-        df.json.compile.print.parsling(json_workspace, json_parsling.examples_header, df.constant.0)()
+        df.json.compile.print.parsling(json_workspace, json_parsling.tests_header, df.constant.0)()
 
         [ exit all test running ]
         df.jump.bottom(not_found, @df.master_scope)()
     }
 
     [ setup loop data ]
-    df.json.traverse.calculate.parsling_list_metadata(json_parsling.examples_header)(current, parsling_byte_size, examples.count)
-    df.integer.subtract(examples.count, df.constant.1)(examples.max_index)
-    df.set("name")(example_name_json_name)
-    df.set("files")(example_files_json_name)
+    df.json.traverse.calculate.parsling_list_metadata(json_parsling.tests_header)(current, parsling_byte_size, tests.count)
+    df.integer.subtract(tests.count, df.constant.1)(tests.max_index)
+    df.set("name")(test_name_json_name)
+    df.set("files")(test_files_json_name)
 
     [ setup first test ]
-    df.set(df.integer.0)(examples.index)
+    df.set(df.integer.0)(tests.index)
 
-    [ run example loop ]
-    @json.run_all_examples df.always = {
+    [ run test loop ]
+    @json.run_all_tests df.always = {
         [ check if should quit ]
-        df.integer.within_range(df.constant.0, examples.index, examples.max_index)(in_range, out_of_range)
-        df.jump.bottom(out_of_range, @json.run_all_examples)()
+        df.integer.within_range(df.constant.0, tests.index, tests.max_index)(in_range, out_of_range)
+        df.jump.bottom(out_of_range, @json.run_all_tests)()
 
         [ get parsling ]
-        df.json.traverse.retrieve_parsling.by_index(json_parsling.examples_header, examples.index)(example.parsling, found, not_found)
+        df.json.traverse.retrieve_parsling.by_index(json_parsling.tests_header, tests.index)(test.parsling, found, not_found)
 
-        [ print example name ]
-        df.json.traverse.retrieve_parsling.by_name(example.parsling, example_name_json_name)(json_parsling.name, found, not_found)
-        @json.run_all_examples.json_error not_found = {
+        [ print test name ]
+        df.json.traverse.retrieve_parsling.by_name(test.parsling, test_name_json_name)(json_parsling.name, found, not_found)
+        @json.run_all_tests.json_error not_found = {
             [ "name" not found ]
             df.set("The test: %22;")(message)
             df.print.buffer_as_string(message)()
-            df.print.buffer_as_string(example_name_json_name)()
+            df.print.buffer_as_string(test_name_json_name)()
             df.set("%22; Had an invalid json setup. The name of the test was not found.%0a;")(message)
             df.print.buffer_as_string(message)()
 
@@ -101,26 +101,26 @@ df_examples.run_all_examples()() = {
             df.jump.bottom(not_found, @df.master_scope)()
         }
 
-        [ print example name ]
-        df.set("----------------%0a;Running example: ")(message)
+        [ print test name ]
+        df.set("----------------%0a;Running test: ")(message)
         df.print.buffer_as_string(message)()
         df.print.buffer_as_string(json_parsling.name:value.datum:raw)()
         df.set(":%0a;----------------%0a;")(message)
         df.print.buffer_as_string(message)()
 
-        [ perform example ]
+        [ perform test ]
         [ TODO ]
 
-        [ next example ]
-        df.integer.add(examples.index, df.constant.1)(examples.index)
-        df.jump.top(df.always, @json.run_all_examples)()
+        [ next test ]
+        df.integer.add(tests.index, df.constant.1)(tests.index)
+        df.jump.top(df.always, @json.run_all_tests)()
     }
 }
 
 [ hello world ]
 test.hello_world()() = {
     [ setup file path ]
-    df.set("./examples/hello-world/hello-world.df")(file_path)
+    df.set("./tests/hello-world/hello-world.df")(file_path)
     df.pack.null()(program.input !df.buffer)
 
     [ run test ]
@@ -130,7 +130,7 @@ test.hello_world()() = {
 [ basic language abilities ]
 test.scratch()() = {
     [ setup file path ]
-    df.set("./examples/scratch.df")(file_path)
+    df.set("./tests/scratch.df")(file_path)
     df.pack.null()(program.input !df.buffer)
 
     [ run test ]
@@ -143,7 +143,7 @@ test.scratch()() = {
 [ test json abilities ]
 test.json()() = {
     [ setup file path ]
-    df.set("./examples/test_json.df")(file_path)
+    df.set("./tests/test_json.df")(file_path)
     df.pack.null()(program.input !df.buffer)
 
     [ run test ]
@@ -153,7 +153,7 @@ test.json()() = {
 [ test anvil abilities ]
 test.anvil()() = {
     [ setup file path ]
-    df.set("./examples/test_anvil.df")(file_path)
+    df.set("./tests/test_anvil.df")(file_path)
     df.pack.null()(program.input !df.buffer)
 
     [ run test ]

@@ -1,5 +1,5 @@
 {
-    "examples": [
+    "tests": [
         {
             "name": "Hello World!",
             "files": [

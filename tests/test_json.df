@@ -8,7 +8,7 @@ df.main()() = {
 test.json.test_json_compiler()() = {
     [ test compiler ]
     [ get file data ]
-    df.set("./examples/data/test_json.json")(file_path)
+    df.set("./tests/data/test_json.json")(file_path)
     df.file_to_buffer(file_path)(file_text)
 
     [ print raw text ]

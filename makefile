@@ -1,2 +1,2 @@
 all:
-	../dragon-forge-debug.elf ./run-all-examples.df
+	../dragon-forge-debug.elf ./run-all-tests.df
