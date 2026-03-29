@@ -1,0 +1,10 @@
+{
+    "examples": [
+        {
+            "name": "Hello World!",
+            "files": [
+                "./hello_world.df"
+            ]
+        }
+    ]
+}
