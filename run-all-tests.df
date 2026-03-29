@@ -75,6 +75,10 @@ df_tests.run_all_tests()() = {
     df.set("name")(test_name_json_name)
     df.set("files")(test_files_json_name)
 
+    [ check for no tests ]
+    df.integer.within_range(df.constant.0, tests.count, df.constant.0)(in_range, out_of_range)
+    df.jump.bottom(in_range, @df.master_scope)()
+
     [ setup first test ]
     df.set(df.integer.0)(tests.index)
 
