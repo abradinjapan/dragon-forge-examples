@@ -339,7 +339,7 @@ scratch.print.box_3D(box !scratch.box_3D)() = {
     df.print.new_line()()
 }
 
-!scratch.box_3D(x !df.cell, y !df.cell, z !df.cell)
+!scratch.box_3D = (x !df.cell, y !df.cell, z !df.cell)
 
 [ test normal jumping ]
 scratch.test.jumping()() = {
@@ -371,7 +371,7 @@ scratch.test.jumping()() = {
 }
 
 [ math conglomerate ]
-!scratch.maths(addition !df.cell #df.json.boolean, subtraction !df.cell, multiplication !df.cell, division !df.cell, modulous !df.cell)
+!scratch.maths = (addition !df.cell #df.json.boolean, subtraction !df.cell, multiplication !df.cell, division !df.cell, modulous !df.cell)
 
 [ test math ]
 scratch.test.maths(a !df.cell, b !df.cell)(maths !scratch.maths) = {
@@ -481,7 +481,7 @@ scratch.print.time(time !df.time)() = {
 }
 
 [ test tags ]
-!scratch.tags(
+!scratch.tags = (
     buffer !df.buffer #df.json.buffer.addresses
 )
 

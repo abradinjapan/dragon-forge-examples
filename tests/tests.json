@@ -8,6 +8,13 @@
             ]
         },
         {
+            "name": "Basics",
+            "manual_checking": true,
+            "files": [
+                "./tests/basics.df"
+            ]
+        },
+        {
             "name": "Scratch",
             "files": [
                 "./tests/scratch.df"

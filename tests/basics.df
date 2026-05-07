@@ -17,14 +17,28 @@ basics.test.test_value_setting()() = {
 
     [ test writing numbers ]
     df.set(df.binary.__101010__101010__)(binary) [ binary number with separators ]
-    df.set(df.integer.1_000)() [ unsigned integer ]
-    df.set(df.integer.n2_000)() [ signed integer ]
-    df.set(df.hexadecimal.0123456789_abcdef)() [ hexadecimal ]
+    df.set(df.integer.1_000)(signed_integer) [ unsigned integer ]
+    df.set(df.integer.n2_000)(unsigned_integer) [ signed integer ]
+    df.set(df.hexadecimal.0123456789_abcdef)(hexadecimal) [ hexadecimal ]
 
     [ print numbers ]
+    basics.print_every_numeral_literal(binary)()
+    basics.print_every_numeral_literal(signed_integer)()
+    basics.print_every_numeral_literal(unsigned_integer)()
+    basics.print_every_numeral_literal(hexadecimal)()
 }
 
-[ print number as all types ]
-basics.print_every_numberal_literal(number !dragon.cell)() = {
-    df.set("%09;Every possible literal:%0a;")(message)
+[ print number as all available types ]
+basics.print_every_numeral_literal(number !df.cell)() = {
+    [ setup strings ]
+    df.set("Every possible literal:%0a;")(message)
+
+    [ perform prints ]
+    df.print.buffer_as_string(message)()
+    df.print.integer.unsigned(number)()
+    df.print.new_line()()
+    df.print.binary.lower_to_higher(number)()
+    df.print.new_line()()
+    df.print.binary.higher_to_lower(number)()
+    df.print.new_line()()
 }
